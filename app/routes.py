@@ -63,10 +63,11 @@ def register():
 @app.route('/email', methods=['GET', 'POST'])
 @login_required
 def sendEmail():
+    user = current_user
     form = SendForm()
     if form.validate_on_submit():
         send_email(form.subject.data, form.from_email.data, [form.recipients_email.data], form.text_body.data, '')
         print(form.subject.data, form.from_email.data, [form.recipients_email.data], form.text_body.data, '')
         flash('Email has been sent')
         return redirect(url_for('sendEmail'))
-    return render_template('email.html',title='Contact Us', form=form)
+    return render_template('email.html',title='Contact Us', form=form, user=user)

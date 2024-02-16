@@ -1,3 +1,26 @@
 {% extends "base.html" %} {% block content %}
-<h1>Hello, {{user.username}} ! this is in template</h1>
+<!--<h1>Hello, {{user.username}} ! this is in template</h1>-->
+
+<div class="container py-4">
+  <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Hello, {{ user.username }}</h1>
+      <p class="col-md-8 fs-4">
+        Hello {{ user.username }}! Welcome to Microblog. This app is your
+        gateway to easily reach out to anyone you choose via email. All you need
+        to do is type in your email, the recipient's email, the subject, and
+        your message. With just one click, your message is on its way. You can
+        send as many messages as you like to all your subscribers. Why wait?
+        Click the button below and give it a try right now!
+      </p>
+      <a
+        class="btn btn-primary btn-lg"
+        type="button"
+        href="{{ url_for('sendEmail') }}"
+        >Send Email</a
+      >
+    </div>
+  </div>
+</div>
+
 {% endblock %}
